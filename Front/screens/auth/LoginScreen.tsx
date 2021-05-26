@@ -1,85 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import axios from 'axios';
-import { StyleSheet,View,Button,TextInput,TouchableOpacity,Text, Alert} from "react-native";
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import Discount from "../Discounts/discount";
+import React, {useState} from 'react';
+import { StyleSheet,View,TextInput,TouchableOpacity,Text, Alert} from "react-native";
 
-// @ts-ignore
-export default function LoginScreen({ navigation }) {
+const webservice = require('../../WebService/webservice')
 
+export default function LoginScreen({ navigation } : {navigation:any}) {
 
-
-  let state = {
-    adressRequest: 'http://192.168.1.78:8080',
-    username: '',
-    password: '',
-    connexion: false,
-    textError: ""
-  }
-
-  const storeData = async (value: string) => {
-    try {
-      await AsyncStorage.setItem('@id', value)
-    } catch (e) {
-      // saving error
-      console.error(e);
-    }
-  }
-
-
-  function testZebi()  {
-    console.log("1");
-    return 1;
-  }
-
-
-
-  function _userLog(user: any) {
-    state.username = user;
-  }
-
-
-  function _passwordLog(password: any) {
-    state.password = password;
-  }
-
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  let textError = '';
 
   function _mdpOublie() {
     console.log('mot de passe oublié !');
-
   }
 
-  const requestLogin = async () => {
-    try {
-      const response =  await axios.post(state.adressRequest+'/Login', {username: state.username, password: state.password});
-      if (response.data != "Nom utilisateur ou mot de passe incorrect"){
-        state.connexion = true;
+  async function _connexion() {
+    const user = await webservice.login(username, password);
 
-      }
-    }catch (err){
-      console.error(err);
+    if (user == null) {
+      Alert.alert("Connexion","Nom d'utilisateur ou mot de passe incorrect ❌");
+    } else {
+      navigation.navigate('Home');
+      //getData();
     }
-  };
-
-
-
-  function _connexion() {
-    state.connexion = false;
-    var user = state.username;
-    var password = state.password;
-    requestLogin();
-    setTimeout(function(){ // Pas jojo
-      if (state.connexion == true){
-        navigation.navigate('Home');
-        console.log('connecté');
-        //getData();
-      }
-      else{
-        Alert.alert("Connexion","Nom d'utilisateur ou mot de passe incorrect ❌");
-      }
-    }, 1000);
-
   }
 
   function _register() {
@@ -93,22 +35,22 @@ export default function LoginScreen({ navigation }) {
       <View style={styles.viewInputs}>
         <TouchableOpacity
             style={[styles.textinput, styles.buttonValide]}
-            onPress={() => testZebi()} >
+        >
           <Text >TDD</Text>
         </TouchableOpacity>
 
 
         <Text style={styles.textLogin}>Adresse mail</Text>
-        <TextInput onChangeText={(text) => _userLog(text)} style={styles.textinput} placeholder=''/>
+        <TextInput onChangeText={(text) => setUsername(text)} style={styles.textinput} placeholder=''/>
         <Text style={styles.textLogin}>Mot de passe</Text>
-        <TextInput onChangeText={(text) => _passwordLog(text)} style={styles.textinput} placeholder=''/>
+        <TextInput onChangeText={(text) => setPassword(text)} style={styles.textinput} placeholder=''/>
         <TouchableOpacity
           onPress={_mdpOublie}
         >
           <Text style={styles.textOublie}  >Mot de passe oublié ?</Text>
         </TouchableOpacity>
 
-        <Text style={styles.textError}>{state.textError}</Text>
+        <Text style={styles.textError}>{textError}</Text>
       </View>
       <View style={{flex : 2}}>
         <Text style={[styles.text]}>En utilisant GoStyle vous confirmez être en accord avec nos
@@ -193,6 +135,5 @@ const styles = StyleSheet.create({
   textError: {
     color: '#FE5A36',
   }
-
 })
 
