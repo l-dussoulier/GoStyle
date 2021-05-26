@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, StyleSheet, FlatList, Text, Button } from "react-native";
-import {getAllDiscounts} from "../../WebService/webservice"
+import {getAllDiscounts} from "../../WebService/data"
 import DiscountItem from "./discountItem";
 import axios from "axios";
 
