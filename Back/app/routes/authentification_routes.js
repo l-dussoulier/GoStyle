@@ -4,7 +4,7 @@ module.exports = function(app, passport) {
 	// =====================================
 
 	app.get('/login', function(req, res) {
-		res.json("Nom utilisateur ou mot de passe incorrect");
+		res.json(null);
 	});
 
 	app.post('/login', passport.authenticate('local-login', {
