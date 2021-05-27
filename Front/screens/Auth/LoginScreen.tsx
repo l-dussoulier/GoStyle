@@ -7,64 +7,35 @@ export default function LoginScreen({ navigation } : {navigation:any}) {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  let textError = '';
-
-  function _mdpOublie() {
-    console.log('mot de passe oublié !');
-  }
 
   async function _connexion() {
-    const user = await webservice.login(username, password);
-
-    if (user == null) {
-      Alert.alert("Connexion","Nom d'utilisateur ou mot de passe incorrect ❌");
-    } else {
+    const response = await webservice.login(username, password);
+    if (response.status) {
       navigation.navigate('Home');
-      //getData();
+    } else {
+      Alert.alert("Connexion", response.message);
     }
   }
 
-  function _register() {
-    navigation.navigate('Register');
-  }
-
-  function _condition(){
-    navigation.navigate('Condition');
-  }
-
-  function _politique(){
-    navigation.navigate('Politique');
-  }
-
-
   return (
     <View style={styles.main_container}>
-      <Text style={styles.name}>GoStyle</Text>
-      <View style={styles.viewInputs}>
-        <TouchableOpacity
-            style={[styles.textinput, styles.buttonValide]}
-        >
-          <Text >TDD</Text>
-        </TouchableOpacity>
 
+      <Text style={styles.name}>GoStyle</Text>
+
+      <View style={styles.viewInputs}>
 
         <Text style={styles.textLogin}>Adresse mail</Text>
         <TextInput onChangeText={(text) => setUsername(text)} style={styles.textinput} placeholder=''/>
         <Text style={styles.textLogin}>Mot de passe</Text>
         <TextInput onChangeText={(text) => setPassword(text)} style={styles.textinput} placeholder=''/>
-        <TouchableOpacity
-          onPress={_mdpOublie}
-        >
-          <Text style={styles.textOublie}  >Mot de passe oublié ?</Text>
-        </TouchableOpacity>
 
-        <Text style={styles.textError}>{textError}</Text>
       </View>
       <View style={{flex : 2}}>
+
         <Text style={[styles.text]}>En utilisant GoStyle vous confirmez être en accord avec nos
-          <Text style={[styles.textUnderLine]} onPress={() => _condition()}> conditions d’utilisation</Text>
+          <Text style={[styles.textUnderLine]} onPress={() => navigation.navigate('Condition')}> conditions d’utilisation</Text>
           et notre
-          <Text style={[styles.textUnderLine]} onPress={() => _politique()}> politique de confidentialité</Text>
+          <Text style={[styles.textUnderLine]} onPress={() => navigation.navigate('Politique')}> politique de confidentialité</Text>
         </Text>
 
         <TouchableOpacity
@@ -75,16 +46,13 @@ export default function LoginScreen({ navigation } : {navigation:any}) {
 
         <TouchableOpacity
           style={[styles.textinput, styles.buttonValide]}
-          onPress={() => _register()}>
+          onPress={() => navigation.navigate('Register')}>
           <Text style={styles.textButton}>S'inscire</Text>
         </TouchableOpacity>
 
-
       </View>
     </View>
-
   )
-
 }
 
 const styles = StyleSheet.create({

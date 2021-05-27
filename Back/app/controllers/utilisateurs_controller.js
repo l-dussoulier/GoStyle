@@ -5,11 +5,11 @@ const Op = db.Sequelize.Op;
 
 // Récupère la liste des coupons de l'utilisateur
 exports.findAllCouponsById = (req, res) => {
-    if (req.user == null) {
+    if (req.session.user == null) {
         res.status(500).send({message: 'Aucun utilisateur connecté !'});
     }
     else {
-        let id = req.user.id
+        let id = req.session.user.id
         Utilisateurs.findByPk(id, {
             include : [
                 {

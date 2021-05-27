@@ -1,4 +1,5 @@
 const config = require('./config');
+const fetch = require('node-fetch');
 
 export const login = async (username, password) => {
     try {
@@ -19,10 +20,8 @@ export const login = async (username, password) => {
             });
     }
     catch (error) {
-        console.log(error);
     }
 }
-
 
 export const register = async (username, password) => {
     try {

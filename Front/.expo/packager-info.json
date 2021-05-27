@@ -4,5 +4,6 @@
   "packagerPort": 19000,
   "expoServerNgrokUrl": "https://kk-ntu.anonymous.front.exp.direct",
   "packagerNgrokUrl": "https://packager.kk-ntu.anonymous.front.exp.direct",
-  "ngrokPid": 3120
+  "ngrokPid": 3120,
+  "webpackServerPort": 19006
 }

@@ -1,47 +1,15 @@
-module.exports = function(app, passport) {
-	// =====================================
-	// LOGIN ===============================
-	// =====================================
+module.exports = function(app) {
+    const authentification = require('../controllers/authentification_controller');
 
-	app.get('/login', function(req, res) {
-		res.json(null);
-	});
+    // Login
+    app.post('/login', authentification.login);
 
-	app.post('/login', passport.authenticate('local-login', {
-		successRedirect: '/profile',
-		failureRedirect: '/login',
-		failureFlash: true
-	}));
+    // Signup
+    app.post('/signup', authentification.signup);
 
-	// =====================================
-	// SIGNUP ==============================
-	// =====================================
+    // Logout
+    app.get('/logout', authentification.logout);
 
-	app.get('/signup', function(req, res) {
-		res.json("Nom utilisateur déjà utilisé");
-	});
-
-	app.post('/signup', passport.authenticate('local-signup', {
-		successRedirect: '/profile',
-		failureRedirect: '/signup',
-		failureFlash: true
-	}));
-
-	// =====================================
-	// PROFILE =============================
-	// =====================================
-
-	app.get('/profile', function(req, res) {
-		res.json(req.user);
-	});
-
-	// =====================================
-	// LOGOUT ==============================
-	// =====================================
-
-	app.get('/logout', function(req, res) {
-		req.logout();
-		res.json("OK");
-	});
-};
-
+    // Profile
+    app.get('/profile', authentification.profil);
+}

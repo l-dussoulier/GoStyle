@@ -6,11 +6,11 @@ const Op = db.Sequelize.Op;
 
 // Vérifie et ajoute un coupon à la liste de l'utilisateur
 exports.checkCoupon = (req, res) => {
-    if (req.user == null) {
+    if (req.session.user == null) {
         res.status(500).send({message: 'Aucun utilisateur connecté !'});
     }
     else {
-        let id = req.user.id;
+        let id = req.session.user.id;
         let qrCode = req.query.qrcode;
 
         // On récupère le coupon

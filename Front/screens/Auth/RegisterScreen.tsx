@@ -1,41 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import {StyleSheet, View, Button, TextInput, TouchableOpacity, Text, Alert} from "react-native";
-import axios from "axios";
+import {StyleSheet, View, TextInput, TouchableOpacity, Text, Alert} from "react-native";
 
 const webservice = require('../../WebService/webservice')
-// @ts-ignore
-export default function RegisterScreen({ navigation }) {
 
+export default function RegisterScreen({ navigation } : {navigation:any}) {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
 
-
  async function _register() {
-   if (password == password2) {
-     const user = await webservice.register(username, password);
-     if (user == null) {
-       Alert.alert("Erreur survenue ❌");
+   if (password != password2) {
+     Alert.alert("Inscription", "Les deux mots de passe sont différents");
+   } else {
+     const response = await webservice.register(username, password);
+     if (response.status) {
+       navigation.navigate('Home');
      } else {
-       navigation.navigate('Login');
+       Alert.alert(response.message);
      }
-
-   }else {
-     Alert.alert("Les deux mots de passe sont différents");
    }
  }
-
-  function _condition(){
-    navigation.navigate('Condition');
-  }
-
-  function _politique(){
-    navigation.navigate('Politique');
-  }
-
 
 
   return (
@@ -48,21 +33,17 @@ export default function RegisterScreen({ navigation }) {
         <TextInput onChangeText={(text) => setPassword(text)} style={styles.textinput} placeholder='Mot de passe'/>
 
         <Text style={styles.textLogin}>Confirmation mot de passe</Text>
-        <TextInput onChangeText={(text) => setPassword2(text)} style={styles.textinput} placeholder='confirmation mot de passe'/>
+        <TextInput onChangeText={(text) => setPassword2(text)} style={styles.textinput} placeholder='Confirmation mot de passe'/>
 
       </View>
       <View style={{flex : 2}}>
-        <Text style={[styles.text]}>En utilisant RiderZ vous confirmez être en accord avec nos
-          <Text style={[styles.textUnderLine]} onPress={() => _condition()}> conditions d’utilisation</Text>
+        <Text style={[styles.text]}>En utilisant GoStyle vous confirmez être en accord avec nos
+          <Text style={[styles.textUnderLine]} onPress={() => navigation.navigate('Condition')}> conditions d’utilisation</Text>
           et notre
-          <Text style={[styles.textUnderLine]} onPress={() => _politique()}> politique de confidentialité</Text>
+          <Text style={[styles.textUnderLine]} onPress={() => navigation.navigate('Politique')}> politique de confidentialité</Text>
         </Text>
 
-        <TouchableOpacity
-          style={[styles.textinput, styles.buttonValide]}
-          onPress={() => _register()}
-
-        >
+        <TouchableOpacity style={[styles.textinput, styles.buttonValide]} onPress={() => _register()}>
           <Text style={styles.textButton}>S'enregistrer</Text>
         </TouchableOpacity>
       </View>

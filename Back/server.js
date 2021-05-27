@@ -1,5 +1,3 @@
-// server.js
-
 // set up ======================================================================
 var express      = require('express');
 var session      = require('express-session');
@@ -9,11 +7,7 @@ const cors       = require("cors");
 var morgan       = require('morgan');
 var app          = express();
 var port         = process.env.PORT || 8080;
-var passport     = require('passport');
 var flash        = require('connect-flash');
-
-// configuration ===============================================================
-require('./config/passport')(passport); // pass passport for configuration
 
 // set up cors
 var corsOptions = {
@@ -34,8 +28,6 @@ app.use(session({
 	resave: true,
 	saveUninitialized: true
  } ));
-app.use(passport.initialize());
-app.use(passport.session());
 app.use(flash());
 
 // database sequelize
@@ -50,8 +42,8 @@ db.sequelize.sync();
 // });
 
 // routes ======================================================================
-require('./app/routes/authentification_routes.js')(app, passport);
-require('./app/routes/coupons_routes.js')(app, passport);
+require('./app/routes/authentification_routes.js')(app);
+require('./app/routes/coupons_routes.js')(app);
 
 // launch ======================================================================
 app.listen(port);

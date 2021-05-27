@@ -14,11 +14,11 @@
     "expo-barcode-scanner": "^10.1.2",
     "express": "^4.13.0",
     "express-session": "^1.11.3",
+    "jest-fetch-mock": "^3.0.3",
     "morgan": "^1.6.0",
     "mysql": "^2.7.0",
     "mysql2": "^2.2.5",
-    "passport": "^0.2.2",
-    "passport-local": "^1.0.0",
+    "node-fetch": "^2.6.1",
     "sequelize": "^6.6.2"
   }
 }
