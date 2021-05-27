@@ -3,10 +3,12 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import LoginScreen from "./screens/auth/LoginScreen";
+import LoginScreen from "./screens/Auth/LoginScreen";
 import {HomeScreen} from "./screens/HomeScreen";
 import {DetailsScreen} from "./screens/DetailsScreen";
-import RegisterScreen from "./screens/auth/RegisterScreen";
+import RegisterScreen from "./screens/Auth/RegisterScreen";
+import ConditionScreen from "./screens/Auth/ConditionScreen";
+import PolitiqueScreen from "./screens/Auth/PolitiqueScreen";
 
 const Stack = createStackNavigator();
 
@@ -25,6 +27,8 @@ function App() {
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Detail" component={DetailsScreen} />
           <Stack.Screen name="Register" component={RegisterScreen} />
+          <Stack.Screen name="Condition" component={ConditionScreen} />
+          <Stack.Screen name="Politique" component={PolitiqueScreen} />
         </Stack.Navigator>
       </NavigationContainer>
   );

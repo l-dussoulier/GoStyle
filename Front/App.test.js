@@ -4,11 +4,11 @@ import Adapter from 'enzyme-adapter-react-16';
 import Enzyme from 'enzyme';
 import { shallow } from 'enzyme';
 import renderer from 'react-test-renderer';
-import LoginScreen from './screens/auth/LoginScreen';
-import testZebi from './screens/auth/LoginScreen';
+import LoginScreen from './screens/Auth/LoginScreen';
+import testZebi from './screens/Auth/LoginScreen';
 import Button from './components/Button';
 
-import MyC from './screens/auth/LoginScreen';
+import MyC from './screens/Auth/LoginScreen';
 
 import { StyleSheet,View,TextInput,TouchableOpacity,Text, Alert} from "react-native";
 import Discount from "./screens/Discounts/discount";

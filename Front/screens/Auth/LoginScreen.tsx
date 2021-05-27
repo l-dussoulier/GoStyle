@@ -28,6 +28,14 @@ export default function LoginScreen({ navigation } : {navigation:any}) {
     navigation.navigate('Register');
   }
 
+  function _condition(){
+    navigation.navigate('Condition');
+  }
+
+  function _politique(){
+    navigation.navigate('Politique');
+  }
+
 
   return (
     <View style={styles.main_container}>
@@ -54,9 +62,9 @@ export default function LoginScreen({ navigation } : {navigation:any}) {
       </View>
       <View style={{flex : 2}}>
         <Text style={[styles.text]}>En utilisant GoStyle vous confirmez être en accord avec nos
-          <Text style={[styles.textUnderLine]}> conditions d’utilisation</Text>
+          <Text style={[styles.textUnderLine]} onPress={() => _condition()}> conditions d’utilisation</Text>
           et notre
-          <Text style={[styles.textUnderLine]}> politique de confidentialité</Text>
+          <Text style={[styles.textUnderLine]} onPress={() => _politique()}> politique de confidentialité</Text>
         </Text>
 
         <TouchableOpacity
@@ -135,5 +143,6 @@ const styles = StyleSheet.create({
   textError: {
     color: '#FE5A36',
   }
+
 })
 
