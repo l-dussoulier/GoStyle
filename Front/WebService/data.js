@@ -1,5 +1,5 @@
 export function getAllDiscounts () {
-    const url = "http://192.168.1.78:8080/couponsUtilisateurs"
+    const url = "http://192.168.1.68:8080/couponsUtilisateurs"
     return fetch(url)
         .then((response)=>response.json())
         .catch((error)=>console.error(error))

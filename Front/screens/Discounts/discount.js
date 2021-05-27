@@ -3,6 +3,8 @@ import { View, StyleSheet, FlatList, Text, Button } from "react-native";
 import {getAllDiscounts} from "../../WebService/data"
 import DiscountItem from "./discountItem";
 import axios from "axios";
+{/*import * as Permissions from 'expo-permissions';*/}
+import { RNCamera } from 'react-native-camera';
 
 class Discount extends React.Component {
 
@@ -26,6 +28,7 @@ class Discount extends React.Component {
     UNSAFE_componentWillMount() {
         this._loadDiscounts()
     }
+
     render() {
         return (
             <View style={styles.view}>
@@ -38,6 +41,18 @@ class Discount extends React.Component {
                     keyExtractor={(item) => item.id.toString()}
                     renderItem={({item}) => <DiscountItem discount={item}/>}
                 />
+                <Button title="Scanner un code promo" onPress={() => this._logOut()}/>
+                <RNCamera
+                    ref={ref => {
+                        this.camera = ref;
+                    }}
+                    style={{
+                        flex: 1,
+                        width: '100%',
+                    }}
+                    onGoogleVisionBarcodesDetected={this.barcodeRecognized}
+                    >
+                </RNCamera>
             </View>
         )
     }
@@ -57,6 +72,9 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     button:{
+
+    },
+    buttonQR:{
 
     }
 })
