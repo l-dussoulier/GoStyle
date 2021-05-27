@@ -23,7 +23,7 @@ export const login = async (username, password) => {
     }
 }
 
-export const register = async (username, password) => {
+export const signup = async (username, password) => {
     try {
         return await fetch(config.HOST + 'signup', {
             method: 'POST',

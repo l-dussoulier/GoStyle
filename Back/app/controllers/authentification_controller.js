@@ -22,7 +22,7 @@ exports.login = (req, res) => {
 
             // If all is well => assign user to session
             req.session.user = user;
-            res.json({ status: true, message: '' });
+            res.json({ status: true, message: 'Connexion effectuée avec succès' });
         }
     }).catch(err => {
         res.json({ status: false, message: 'Une erreur est survenue' });
@@ -51,7 +51,7 @@ exports.signup = (req, res) => {
             }).then(user => {
                 // assign user to session
                 req.session.user = user;
-                res.json({ status: true, message: '' });
+                res.json({ status: true, message: 'Inscription effectuée avec succès' });
             })
         }
     }).catch(err => {

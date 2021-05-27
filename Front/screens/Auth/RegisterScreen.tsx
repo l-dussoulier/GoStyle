@@ -13,7 +13,7 @@ export default function RegisterScreen({ navigation } : {navigation:any}) {
    if (password != password2) {
      Alert.alert("Inscription", "Les deux mots de passe sont différents");
    } else {
-     const response = await webservice.register(username, password);
+     const response = await webservice.signup(username, password);
      if (response.status) {
        navigation.navigate('Home');
      } else {
