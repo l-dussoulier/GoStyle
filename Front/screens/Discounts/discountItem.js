@@ -30,7 +30,6 @@ const styles = StyleSheet.create({
         height: 120,
         flexDirection: 'column',
         borderTopWidth: 1,
-        borderBottomWidth: 1,
         borderColor: 'black',
         borderStyle: 'solid'
     },
@@ -45,8 +44,7 @@ const styles = StyleSheet.create({
     },
     title:{
         fontWeight: 'bold',
-        fontSize: 20,
-        color: 'red'
+        fontSize: 20
     },
     text:{
 

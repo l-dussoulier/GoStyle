@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, StyleSheet, FlatList, Text, Button } from "react-native";
+import { View, StyleSheet, FlatList, Text, Button, TouchableOpacity } from "react-native";
 import DiscountItem from "./discountItem";
 import {getAllDiscounts} from "../../WebService/webservice";
 
@@ -29,8 +29,13 @@ class Discount extends React.Component {
         return (
             <View style={styles.view}>
                 <View style={styles.viewHeader}>
+                    <TouchableOpacity
+                        style={styles.button}
+                        onPress={() => this._logOut()}
+                    >
+                        <Text>Déconnexion</Text>
+                    </TouchableOpacity>
                     <Text style={styles.title}>Liste des réductions</Text>
-                    <Button title="Déconnexion" onPress={() => this._logOut()}/>
                 </View>
                 <FlatList
                     data={this._tabDiscounts}
