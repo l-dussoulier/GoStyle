@@ -3,18 +3,16 @@ var express      = require('express');
 var session      = require('express-session');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
-const cors       = require("cors");
 var morgan       = require('morgan');
 var app          = express();
 var port         = process.env.PORT || 8080;
 var flash        = require('connect-flash');
 
-// set up cors
-var corsOptions = {
-	origin: 'http://localhost:8080'
-};
-
-app.use(cors(corsOptions));
+app.use(function(req, res, next) {
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	next();
+});
 
 app.use(morgan('dev'));
 app.use(cookieParser());

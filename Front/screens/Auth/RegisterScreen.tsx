@@ -26,25 +26,25 @@ export default function RegisterScreen({ navigation } : {navigation:any}) {
   return (
     <View style={styles.main_container}>
       <View style={styles.viewInputs}>
-        <Text style={styles.textLogin}>Username</Text>
-        <TextInput onChangeText={(text) => setUsername(text)} style={styles.textinput} placeholder='Utilisateur'/>
+        <Text style={styles.textLogin}>Utilisateur</Text>
+        <TextInput onChangeText={(text) => setUsername(text)} style={styles.textinput} nativeID={"userRegister"} placeholder='Utilisateur'/>
 
         <Text style={styles.textLogin}>Mot de passe</Text>
-        <TextInput onChangeText={(text) => setPassword(text)} style={styles.textinput} placeholder='Mot de passe'/>
+        <TextInput onChangeText={(text) => setPassword(text)} secureTextEntry={true} style={styles.textinput} nativeID={"passwordRegister"} placeholder='Mot de passe'/>
 
         <Text style={styles.textLogin}>Confirmation mot de passe</Text>
-        <TextInput onChangeText={(text) => setPassword2(text)} style={styles.textinput} placeholder='Confirmation mot de passe'/>
+        <TextInput onChangeText={(text) => setPassword2(text)} secureTextEntry={true} style={styles.textinput} nativeID={"password2Register"} placeholder='Confirmation mot de passe'/>
 
       </View>
       <View style={{flex : 2}}>
         <Text style={[styles.text]}>En utilisant GoStyle vous confirmez être en accord avec nos
-          <Text style={[styles.textUnderLine]} onPress={() => navigation.navigate('Condition')}> conditions d’utilisation</Text>
+          <Text style={[styles.textUnderLine]} onPress={() => navigation.navigate('Condition')}> conditions d’utilisation </Text>
           et notre
           <Text style={[styles.textUnderLine]} onPress={() => navigation.navigate('Politique')}> politique de confidentialité</Text>
         </Text>
 
-        <TouchableOpacity style={[styles.textinput, styles.buttonValide]} onPress={() => _register()}>
-          <Text style={styles.textButton}>S'enregistrer</Text>
+        <TouchableOpacity style={[styles.textinput, styles.buttonValide]} onPress={() => _register()} >
+          <Text style={styles.textButton} nativeID={"inscription"} >S'enregistrer</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -61,8 +61,7 @@ const styles = StyleSheet.create({
     flex : 1
   },
   textinput: {
-    paddingLeft: 80,
-    paddingRight: 80,
+    paddingLeft: 10,
     marginTop:10,
     paddingTop:15,
     paddingBottom:15,
@@ -76,7 +75,7 @@ const styles = StyleSheet.create({
   },
   buttonValide: {
 
-    backgroundColor: '#2E2E41',
+    backgroundColor: '#93A09D',
 
   },
   textLogin : {

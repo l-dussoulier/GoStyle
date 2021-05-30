@@ -19,16 +19,17 @@ function App() {
         <Stack.Navigator>
           <Stack.Screen name="Login" component={LoginScreen} options={{
             title: '',
+            headerShown: false,
             headerStyle: {
               backgroundColor: '#FAFAFA',
             }
 
           }}/>
-          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Home" component={HomeScreen} options={{title: 'Liste des réductions'}}/>
           <Stack.Screen name="Detail" component={DetailsScreen} />
           <Stack.Screen name="Register" component={RegisterScreen} />
-          <Stack.Screen name="Condition" component={ConditionScreen} />
-          <Stack.Screen name="Politique" component={PolitiqueScreen} />
+          <Stack.Screen name="Condition" component={ConditionScreen} options={{title: "Condition d'/utilisation"}} />
+          <Stack.Screen name="Politique" component={PolitiqueScreen} options={{title: 'Politique de confidentialité'}}/>
         </Stack.Navigator>
       </NavigationContainer>
   );

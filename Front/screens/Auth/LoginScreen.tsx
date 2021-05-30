@@ -13,7 +13,8 @@ export default function LoginScreen({ navigation } : {navigation:any}) {
     if (response.status) {
       navigation.navigate('Home');
     } else {
-      Alert.alert("Connexion", response.message);
+      console.log(response.status);
+      Alert.alert(response.message);
     }
   }
 
@@ -24,30 +25,30 @@ export default function LoginScreen({ navigation } : {navigation:any}) {
 
       <View style={styles.viewInputs}>
 
-        <Text style={styles.textLogin}>Adresse mail</Text>
-        <TextInput onChangeText={(text) => setUsername(text)} style={styles.textinput} placeholder=''/>
+        <Text style={styles.textLogin}>Utilisateur</Text>
+        <TextInput onChangeText={(text) => setUsername(text)} nativeID={"user"} style={styles.textinput} placeholder=''/>
         <Text style={styles.textLogin}>Mot de passe</Text>
-        <TextInput onChangeText={(text) => setPassword(text)} style={styles.textinput} placeholder=''/>
+        <TextInput onChangeText={(text) => setPassword(text)} nativeID={"password"} secureTextEntry={true} style={styles.textinput} placeholder=''/>
 
       </View>
       <View style={{flex : 2}}>
 
         <Text style={[styles.text]}>En utilisant GoStyle vous confirmez être en accord avec nos
-          <Text style={[styles.textUnderLine]} onPress={() => navigation.navigate('Condition')}> conditions d’utilisation</Text>
+          <Text style={[styles.textUnderLine]} onPress={() => navigation.navigate('Condition')} nativeID={"condition"}> conditions d’utilisation </Text>
           et notre
-          <Text style={[styles.textUnderLine]} onPress={() => navigation.navigate('Politique')}> politique de confidentialité</Text>
+          <Text style={[styles.textUnderLine]} onPress={() => navigation.navigate('Politique')} nativeID={"politique"}> politique de confidentialité</Text>
         </Text>
 
         <TouchableOpacity
           style={[styles.textinput, styles.buttonValide]}
           onPress={() => _connexion()} >
-          <Text style={styles.textButton}>Se connecter</Text>
+          <Text style={styles.textButton} nativeID={"connexion"}>Se connecter</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={[styles.textinput, styles.buttonValide]}
           onPress={() => navigation.navigate('Register')}>
-          <Text style={styles.textButton}>S'inscire</Text>
+          <Text style={styles.textButton} nativeID={"register"}>S'inscire</Text>
         </TouchableOpacity>
 
       </View>
@@ -57,7 +58,7 @@ export default function LoginScreen({ navigation } : {navigation:any}) {
 
 const styles = StyleSheet.create({
   main_container: {
-    marginTop: 20,
+    marginTop: 100,
     paddingLeft : 30,
     paddingRight: 30,
     flex : 1
@@ -67,8 +68,7 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   textinput: {
-    paddingLeft: 80,
-    paddingRight: 80,
+    paddingLeft: 10,
     marginTop:10,
     paddingTop:15,
     paddingBottom:15,

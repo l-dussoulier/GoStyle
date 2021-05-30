@@ -8,6 +8,7 @@ export function HomeScreen({ navigation }) {
 
 
   return (
+
     <Discount/>
   );
 }

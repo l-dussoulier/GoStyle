@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, StyleSheet, FlatList, Text, Button, TouchableOpacity } from "react-native";
 import DiscountItem from "./discountItem";
-import {getAllDiscounts} from "../../WebService/webservice";
+import {getDiscounts} from "../../WebService/webservice";
 
 class Discount extends React.Component {
 
@@ -16,7 +16,7 @@ class Discount extends React.Component {
     }
 
     _loadDiscounts() {
-        getAllDiscounts().then(data => {
+        getDiscounts().then(data => {
             this._tabDiscounts = data
             this.forceUpdate()
         });
@@ -28,15 +28,6 @@ class Discount extends React.Component {
     render() {
         return (
             <View style={styles.view}>
-                <View style={styles.viewHeader}>
-                    <TouchableOpacity
-                        style={styles.button}
-                        onPress={() => this._logOut()}
-                    >
-                        <Text>Déconnexion</Text>
-                    </TouchableOpacity>
-                    <Text style={styles.title}>Liste des réductions</Text>
-                </View>
                 <FlatList
                     data={this._tabDiscounts}
                     keyExtractor={(item) => item.id.toString()}
@@ -61,7 +52,6 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     button:{
-
     }
 })
 

@@ -16,6 +16,7 @@ export const login = async (username, password) => {
         })
             .then(response => response.json())
             .then(response => {
+                console.log(response);
                 return response;
             });
     }
@@ -46,13 +47,24 @@ export const signup = async (username, password) => {
     }
 }
 
-
-
-export function getAllDiscounts () {
-    const url = "http://192.168.1.78:8080/couponsUtilisateurs"
-    return fetch(url)
-        .then((response)=>response.json())
-        .catch((error)=>console.error(error))
+export const getDiscounts = async () => {
+    try {
+        return await fetch(config.HOST+'couponsUtilisateurs', {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type':'application/json'
+            }
+        })
+            .then(response => response.json())
+            .then(response => {
+                return response;
+            });
+    }
+    catch (error){
+        console.log(error);
+    }
 }
+
 
 
