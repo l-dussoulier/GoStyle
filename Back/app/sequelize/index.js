@@ -5,7 +5,8 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
     host: dbConfig.HOST,
     dialect: dbConfig.DIALECT,
     operatorsAliases: false,
-    port: 8889,
+    port: 3306,
+    //port: 8889,
 
     pool: {
         max: dbConfig.POOL.MAX,

@@ -25,7 +25,7 @@ class Coupon extends React.Component {
 
 const styles = StyleSheet.create({
     view:{
-        height: 120,
+        height: 130,
         flexDirection: 'column',
         backgroundColor: 'white',
         borderRadius: 10,
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     title:{
         fontWeight: 'bold',
         fontSize: 30,
-        textAlign: 'center'
+        textAlign: 'center',
     },
     text:{
         marginTop: 10

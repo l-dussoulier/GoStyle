@@ -34,10 +34,10 @@ const db = require('./app/sequelize');
 // sync database
 db.sequelize.sync();
 
-// reset datatable
-// db.sequelize.sync({ force: true }).then(() => {
-//   console.log("Drop and re-sync db.");
-// });
+ //reset datatable
+ //db.sequelize.sync({ force: true }).then(() => {
+   //console.log("Drop and re-sync db.");
+ //});
 
 // routes ======================================================================
 require('./app/routes/authentification_routes.js')(app);
