@@ -42,6 +42,7 @@ db.sequelize.sync();
 // routes ======================================================================
 require('./app/routes/authentification_routes.js')(app);
 require('./app/routes/coupons_routes.js')(app);
+require('./app/routes/test_routes.js')(app);
 
 // launch ======================================================================
 app.listen(port);

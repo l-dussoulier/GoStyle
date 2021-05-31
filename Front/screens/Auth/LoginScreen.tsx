@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { StyleSheet,View,TextInput,TouchableOpacity,Text, Alert} from "react-native";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const webservice = require('../../WebService/webservice')
 
@@ -11,9 +12,9 @@ export default function LoginScreen({ navigation } : {navigation:any}) {
   async function _connexion() {
     const response = await webservice.login(username, password);
     if (response.status) {
+      await AsyncStorage.setItem('@userid', response.userid.toString());
       navigation.navigate('Home');
     } else {
-      console.log(response.status);
       Alert.alert(response.message);
     }
   }

@@ -1,28 +1,21 @@
 import React from 'react'
-import {View, StyleSheet, Text, TouchableOpacity} from "react-native";
+import {View, StyleSheet, Text} from "react-native";
 import Moment from 'moment';
-import {Image} from "react-native-web";
 
-
-
-class DiscountItem extends React.Component {
+class Coupon extends React.Component {
 
     render(){
-        console.log(this.props.discount)
-        const discount = this.props.discount
-        Moment.locale('fr');
-        var dt = discount.createdAt;
         return(
             <View style={styles.view}>
                 <View style={styles.viewHeader}>
-                    <Text style={styles.title}>{discount.libelle}</Text>
+                    <Text style={styles.title}>{this.props.coupon.libelle}</Text>
                 </View>
                 <View style={styles.viewDescription}>
-                    <Text style={styles.text}>{discount.description}</Text>
-                    <Text style={styles.Libellecode} selectable={true}>Avec le code : {discount.code}</Text>
+                    <Text style={styles.text}>{this.props.coupon.description}</Text>
+                    <Text style={styles.Libellecode} selectable={true}>Avec le code : {this.props.coupon.code}</Text>
                 </View>
                 <View style={styles.viewFooter}>
-                    <Text style={styles.date}>Expire le {Moment(dt).add(7, 'days').format('DD/MM/YYYY')}</Text>
+                    <Text style={styles.date}>Expire le {Moment(this.props.coupon.dateExpiration).format('DD/MM/YYYY')}</Text>
                 </View>
 
             </View>
@@ -76,4 +69,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default DiscountItem
+export default Coupon

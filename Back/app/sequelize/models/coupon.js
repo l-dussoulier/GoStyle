@@ -17,6 +17,9 @@ module.exports = (sequelize, Sequelize) => {
         qrCode: {
             type: Sequelize.STRING(255),
             primaryKey: true
+        },
+        dateExpiration: {
+            type: Sequelize.DATE
         }
     });
 

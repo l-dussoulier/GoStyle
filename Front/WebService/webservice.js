@@ -16,7 +16,6 @@ export const login = async (username, password) => {
         })
             .then(response => response.json())
             .then(response => {
-                console.log(response);
                 return response;
             });
     }
@@ -47,9 +46,9 @@ export const signup = async (username, password) => {
     }
 }
 
-export const getDiscounts = async () => {
+export const getCoupons = async (userid) => {
     try {
-        return await fetch(config.HOST+'couponsUtilisateurs', {
+        return await fetch(config.HOST + 'couponsUtilisateurs?id=' + userid, {
             method: 'GET',
             headers: {
                 Accept: 'application/json',
@@ -66,5 +65,43 @@ export const getDiscounts = async () => {
     }
 }
 
+export const addDiscount = async (userid, qrCode) => {
+    try {
+        let params = 'id=' + userid + '&qrcode=' + qrCode;
+        return fetch(config.HOST + 'checkCoupon?' + params, {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type':'application/json'
+            }
+        })
+            .then(response => response.json())
+            .then(response => {
+                return response;
+            });
+    }
+    catch (error){
+        console.log(error);
+    }
+}
 
+export const getDiscountDetails = async (couponid) => {
+    try {
+        let params = 'id=' + couponid;
+        return await fetch(config.HOST + 'coupon?' + params, {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type':'application/json'
+            }
+        })
+            .then(response => response.json())
+            .then(response => {
+                return response;
+            });
+    }
+    catch (error){
+        console.log(error);
+    }
+}
 

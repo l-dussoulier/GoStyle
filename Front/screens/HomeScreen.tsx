@@ -1,14 +1,12 @@
 import * as React from 'react';
-import Discount from "./Discounts/discount";
-import axios from "axios";
+import ListeCoupons from "./Coupons/ListeCoupons";
 
 // @ts-ignore
 
-export function HomeScreen({ navigation }) {
+export default function HomeScreen({ navigation }) {
 
 
   return (
-
-    <Discount/>
+    <ListeCoupons/>
   );
 }
