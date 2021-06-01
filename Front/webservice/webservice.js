@@ -65,30 +65,10 @@ export const getCoupons = async (userid) => {
     }
 }
 
-export const addDiscount = async (userid, qrCode) => {
+export const addCoupon = async (userid, qrCode) => {
     try {
         let params = 'id=' + userid + '&qrcode=' + qrCode;
         return fetch(config.HOST + 'checkCoupon?' + params, {
-            method: 'GET',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type':'application/json'
-            }
-        })
-            .then(response => response.json())
-            .then(response => {
-                return response;
-            });
-    }
-    catch (error){
-        console.log(error);
-    }
-}
-
-export const getDiscountDetails = async (couponid) => {
-    try {
-        let params = 'id=' + couponid;
-        return await fetch(config.HOST + 'coupon?' + params, {
             method: 'GET',
             headers: {
                 Accept: 'application/json',
