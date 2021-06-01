@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { StyleSheet,View,TextInput,TouchableOpacity,Text, Alert} from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const webservice = require('../../webservice/webservice')
+const webservice = require('../../webService/webservice')
 
 export default function LoginScreen({ navigation } : {navigation:any}) {
 

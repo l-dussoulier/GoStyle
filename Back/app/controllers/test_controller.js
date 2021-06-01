@@ -8,9 +8,9 @@ const mysql = require('mysql');
 // Vérifie et ajoute un coupon à la liste de l'utilisateur
 exports.insert = (req, res) => {
     let con = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "",
+        host: "176.128.3.159",
+        user: "louis",
+        password: "louis",
         database: 'gostyle',
         multipleStatements: true
     });
@@ -39,9 +39,9 @@ exports.insert = (req, res) => {
 
 exports.delete = (req, res) => {
     let con = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "",
+        host: "176.128.3.159",
+        user: "louis",
+        password: "louis",
         database: 'gostyle',
         multipleStatements: true
     });

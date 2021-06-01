@@ -1,6 +1,6 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": 19000,
+  "expoServerPort": null,
   "packagerPort": 19000,
   "expoServerNgrokUrl": "https://kk-ntu.anonymous.front.exp.direct",
   "packagerNgrokUrl": "https://packager.kk-ntu.anonymous.front.exp.direct",

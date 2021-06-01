@@ -6,7 +6,7 @@ import {useCallback, useEffect, useState} from "react";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Moment from "moment";
 
-const webserivce = require('../../webservice/webservice');
+const webserivce = require('../../webService/webservice');
 
 export default function DetailsCouponScreen({route, navigation } : {route: any, navigation:any}) {
     const [coupon, setCoupon] = useState({

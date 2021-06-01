@@ -6,7 +6,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useFocusEffect } from '@react-navigation/native';
 import Moment from "moment";
 
-const webserivce = require('../../webservice/webservice');
+const webserivce = require('../../webService/webservice');
 
 export default function HomeScreen({ navigation } : {navigation:any}) {
   const [coupons, setCoupons] = useState([]);
