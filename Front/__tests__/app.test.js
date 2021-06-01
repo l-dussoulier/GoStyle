@@ -1,7 +1,7 @@
 // Tests d'intégration
 
-const webservice = require('../WebService/webservice');
-const config = require('../WebService/config');
+const webservice = require('../webservice/webservice');
+const config = require('../webservice/config');
 const fetch = require('node-fetch');
 
 ///////////////////

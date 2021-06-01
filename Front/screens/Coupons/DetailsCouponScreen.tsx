@@ -6,19 +6,19 @@ import {useCallback, useEffect, useState} from "react";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Moment from "moment";
 
-const webserivce = require('../WebService/webservice');
+const webserivce = require('../../webservice/webservice');
 
 export default function DetailsCouponScreen({route, navigation } : {route: any, navigation:any}) {
     const [coupon, setCoupon] = useState({
         dateExpiration: undefined,
         code: undefined
     });
-    const {couponid, couponqrcode} = route.params;
+    const {couponqrcode} = route.params;
 
     const fetchData = useCallback(() => {
         AsyncStorage.getItem('@userid').then((userid) => {
             if (couponqrcode != null) {
-                webserivce.addDiscount(userid, couponqrcode).then((data: any) => {
+                webserivce.addCoupon(userid, couponqrcode).then((data: any) => {
                     setCoupon(data);
                 });
             }

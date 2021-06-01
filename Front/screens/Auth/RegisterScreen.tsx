@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {StyleSheet, View, TextInput, TouchableOpacity, Text, Alert} from "react-native";
 
-const webservice = require('../../WebService/webservice')
+const webservice = require('../../webservice/webservice')
 
 export default function RegisterScreen({ navigation } : {navigation:any}) {
 

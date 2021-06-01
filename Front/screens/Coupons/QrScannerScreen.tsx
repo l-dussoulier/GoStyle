@@ -4,7 +4,7 @@ import {useCallback, useEffect, useState} from "react";
 import {Button, FlatList, StatusBar, StyleSheet, View, Text} from "react-native";
 import { BarCodeScanner } from 'expo-barcode-scanner';
 
-const webserivce = require('../WebService/webservice');
+const webserivce = require('../../webservice/webservice');
 // @ts-ignore
 
 export default function QrScannerScreen({ navigation }) {
