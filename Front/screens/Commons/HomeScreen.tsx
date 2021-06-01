@@ -38,7 +38,6 @@ export default function HomeScreen({ navigation } : {navigation:any}) {
   }
 
   return (
-
         <View style={styles.view}>
           {coupons.map(coupon => (
               <View style={styles.couponContainer} key={coupon.id}>

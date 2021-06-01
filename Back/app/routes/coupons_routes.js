@@ -11,4 +11,9 @@ module.exports = function(app) {
     // Affichage du détails d'un coupon
     app.get('/coupon', coupons.findById)
 
+
+    // Créer d'un coupon
+    app.post('/coupon', coupons.insert)
+
+
 }

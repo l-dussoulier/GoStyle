@@ -33,10 +33,10 @@ function App() {
                 <Feather name="log-out" style={[styles.logout]} size={24} color="black" onPress={() => _logout(navigation)} />
             )
           })}/>
-          <Stack.Screen name="Register" component={RegisterScreen} />
+          <Stack.Screen name="Register" component={RegisterScreen} options={{title: 'S\'inscrire'}} />
           <Stack.Screen name="Condition" component={ConditionScreen} options={{title: 'Condition d\'utilisation'}} />
-          <Stack.Screen name="Politique" component={PolitiqueScreen} options={{title: 'Politique de confidentialité'}}/>
-          <Stack.Screen name="QrScanner" component={QrScannerScreen} options={{title: 'Scannez votre QrCode' }}/>
+          <Stack.Screen name="Politique" component={PolitiqueScreen} options={{title: 'Politique de confidentialité'}} />
+          <Stack.Screen name="QrScanner" component={QrScannerScreen} options={{title: 'Scannez votre QrCode' }} />
           <Stack.Screen name="DetailsCoupon" component={DetailsCouponScreen} options={({navigation}) => ({
             title: '',
             headerLeft: (props) => (

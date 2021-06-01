@@ -27,9 +27,9 @@ export default function LoginScreen({ navigation } : {navigation:any}) {
       <View style={styles.viewInputs}>
 
         <Text style={styles.textLogin}>Utilisateur</Text>
-        <TextInput onChangeText={(text) => setUsername(text)} nativeID={"user"} style={styles.textinput} placeholder=''/>
+        <TextInput style={styles.textinput} onChangeText={setUsername} nativeID={"user"} placeholder="Utilisateur"/>
         <Text style={styles.textLogin}>Mot de passe</Text>
-        <TextInput onChangeText={(text) => setPassword(text)} nativeID={"password"} secureTextEntry={true} style={styles.textinput} placeholder=''/>
+        <TextInput  style={styles.textinput} onChangeText={setPassword} nativeID={"password"} secureTextEntry={true} placeholder='Mot de passe'/>
 
       </View>
       <View style={{flex : 2}}>

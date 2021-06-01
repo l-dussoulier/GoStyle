@@ -44,7 +44,7 @@ export default function RegisterScreen({ navigation } : {navigation:any}) {
         </Text>
 
         <TouchableOpacity style={[styles.textinput, styles.buttonValide]} onPress={() => _register()} >
-          <Text style={styles.textButton} nativeID={"inscription"} >S'enregistrer</Text>
+          <Text style={styles.textButton} nativeID={"inscription"} >S'inscrire</Text>
         </TouchableOpacity>
       </View>
     </View>

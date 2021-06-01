@@ -51,3 +51,24 @@ exports.findById = (req, res) => {
             });
     });
 }
+
+// Récupère les détails d'un coupon
+exports.insert = (req, res) => {
+    console.log(req.body.libelle)
+    Coupons.create({
+        libelle: req.body.libelle,
+        description: req.body.description,
+        code: req.body.code,
+        qrCode: req.body.qrcode,
+        dateExpiration: req.body.dateexpiration
+    })
+        .then(coupon => {
+            res.send(coupon);
+        })
+        .catch(err => {
+        res.status(500).send({
+            message:
+                err.message || 'Une erreur est survenue lors de la récupération d\'un coupon'
+        });
+    });
+}

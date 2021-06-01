@@ -74,8 +74,3 @@ describe('Coupons', () => {
        expect(response.code).toBe('CPT1');
     });
 });
-
-
-
-
-
