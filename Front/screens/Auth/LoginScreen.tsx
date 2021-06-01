@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { StyleSheet,View,TextInput,TouchableOpacity,Text, Alert} from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -42,14 +42,14 @@ export default function LoginScreen({ navigation } : {navigation:any}) {
 
         <TouchableOpacity
           style={[styles.textinput, styles.buttonValide]}
-          onPress={() => _connexion()} >
+          onPress={() => _connexion()}>
           <Text style={styles.textButton} nativeID={"connexion"}>Se connecter</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={[styles.textinput, styles.buttonValide]}
           onPress={() => navigation.navigate('Register')}>
-          <Text style={styles.textButton} nativeID={"register"}>S'inscire</Text>
+          <Text style={styles.textButton} nativeID={"register"}>S'inscrire</Text>
         </TouchableOpacity>
 
       </View>
